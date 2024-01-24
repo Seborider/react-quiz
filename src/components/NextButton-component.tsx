@@ -1,11 +1,8 @@
-import { NextButtonProps } from "../types/props";
+import { useQuest } from "../context/QuizContext";
 
-export default function NextButton({
-  dispatch,
-  answer,
-  index,
-  numberOfQuestions,
-}: NextButtonProps) {
+export default function NextButton() {
+  const { state, dispatch } = useQuest();
+  const { numberOfQuestions, answer, index } = state;
   return (
     <div>
       {answer !== null && (
@@ -29,7 +26,6 @@ export default function NextButton({
         </>
       )}
       {answer === null && (
-        // Placeholder or disabled button when answer is null
         <button className="btn btn-ui" disabled>
           Waiting for answer...
         </button>

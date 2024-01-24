@@ -1,12 +1,8 @@
-import { ProgressBarProps } from "../types/props";
+import { useQuest } from "../context/QuizContext";
 
-export default function ProgressBar({
-  index,
-  numberOfQuestions,
-  points,
-  maxPossiblePoints,
-  answer,
-}: ProgressBarProps) {
+export default function ProgressBar() {
+  const { state } = useQuest();
+  const { numberOfQuestions, index, points, answer, maxPossiblePoints } = state;
   return (
     <header className="progress">
       <progress

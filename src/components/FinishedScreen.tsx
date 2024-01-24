@@ -1,11 +1,9 @@
-import { FinishedScreenProps } from "../types/props";
+import { useQuest } from "../context/QuizContext";
 
-export default function FinishedScreen({
-  points,
-  maxPossiblePoints,
-  highscore,
-  dispatch,
-}: FinishedScreenProps) {
+export default function FinishedScreen() {
+  const { state, dispatch } = useQuest();
+  const { points, maxPossiblePoints, highScore } = state;
+
   const percentage = (points / maxPossiblePoints) * 100;
 
   let emoji;
@@ -22,7 +20,7 @@ export default function FinishedScreen({
         You scored <strong>{points}</strong> out of {maxPossiblePoints} (
         {Math.ceil(percentage)}&thinsp;%)
       </p>
-      <p className="highscore">Highscore: {highscore} points</p>
+      <p className="highscore">Highscore: {highScore} points</p>
       <button
         className="btn btn-ui"
         onClick={() => dispatch({ type: "restart" })}

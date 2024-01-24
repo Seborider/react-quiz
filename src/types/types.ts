@@ -5,7 +5,15 @@ export type AppState = {
   answer: null | unknown;
   points: number;
   highScore: number;
-  secondsRemaining: number | null;
+  secondsRemaining: number;
+  numberOfQuestions: number;
+  maxPossiblePoints: number;
+  question?: {
+    question: string;
+    options: string[];
+    correctOption: number;
+    points: number;
+  };
 };
 
 export type AppAction =
